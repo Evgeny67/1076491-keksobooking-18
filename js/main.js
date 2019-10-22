@@ -6,12 +6,12 @@ maps.classList.remove('map--faded');
 var cityMap = document.querySelector('.map__pins');
 var button = document.createElement('button');
 button.classList.add('map__pin');
-button.style.left = window.utils.getRandom(300, 900).toString() + 'px';
-button.style.top = window.utils.getRandom(130, 630).toString() + 'px';
+// button.style.left = window.utils.getRandom(300, 900).toString() + 'px';
+// button.style.top = window.utils.getRandom(130, 630).toString() + 'px';
 cityMap.appendChild(button);
 
 var picture = document.createElement('img');
-picture.src = getAvatars();
+// picture.src = getAvatars();
 picture.style.width = '40' + 'px';
 picture.style.height = '40' + 'px';
 picture.alt = 'метка объявления';
@@ -33,20 +33,20 @@ var photos = [
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
 ];
-var locationX = window.utils.getRandom(300, 900);
-var locationY = window.utils.getRandom(130, 630);
+var locationX = window.utils.getRandom(300, 900).toString() + 'px';
+var locationY = window.utils.getRandom(130, 630).toString() + 'px';
+var avatars = shuffle(getAvatars());
 
 function getAvatars() {
-  var avatars = [];
+  var value = [];
   for (var i = 0; i < 8; i++) {
-    avatars[i] = 'img/avatars/user' + (i < 10 ? '0' : '') + i + '.png';
+    value[i] = 'img/avatars/user' + (i < 10 ? '0' : '') + i + '.png';
   }
 
-  return avatars;
+  return value;
 }
 
 function shuffle(arr) {
-
   for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var x = arr[i];
@@ -57,9 +57,25 @@ function shuffle(arr) {
   return arr;
 }
 
-// avatars.forEach(function (user) {
-// var avatarsElement = ........cloneNode(true);
-//  avatarsElement.querySelector('.map__pins').numder = user.window.utils.getRandom(price);
-//  avatarsElement.querySelector('.map__pin').style = user.location;
-//  avatarsElement.querySelector('.map__pin').text = user.type;
+var avatarsList = [];
+
+for (var i = 0; i < 8; i++) {
+  avatarsList.push({
+    names: avatars[i],
+    locationX: window.utils.getRandom(300, 900).toString() + 'px',
+    locationY: window.utils.getRandom(130, 630).toString() + 'px',
+    guests: window.utils.getRandom(1, 3)
+  });
+}
+
+// avatarsList.forEach(function (elem) {
+// var avatarsElement = cityMap.cloneNode(true);
+// avatarsElement.querySelector('.map') = elem.names;
+// avatarsElement.querySelector('.map__pins') = elem.locarionX;
+// avatarsElement.querySelector('.map__pins') = user.locationY;
+// avatarsElement.querySelector('.map__pins').text = 'new metka';
+
+// cityMap.appendChild(avatarsElement);
 // });
+
+
